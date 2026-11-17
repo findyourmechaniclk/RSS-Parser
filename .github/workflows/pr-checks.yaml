@@ -29,6 +29,12 @@ jobs:
 
       - uses: gradle/actions/setup-gradle@v6
 
+      - name: Cache Gradle dependencies
+        uses: actions/cache@v6
+        with:
+          path: ~/.gradle/caches
+          key: ${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle*', '**/gradle-wrapper.properties') }}
+
       - name: Test
         run: ./gradlew :rssparser:jvmTest :rssparser:testAndroidHostTest :rssparser:jsTest :rssparser:wasmJsTest :rssparser:jvmApiCheck
 
@@ -56,6 +62,12 @@ jobs:
           java-version: 21
 
       - uses: gradle/actions/setup-gradle@v6
+
+      - name: Cache Gradle dependencies
+        uses: actions/cache@v6
+        with:
+          path: ~/.gradle/caches
+          key: ${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle*', '**/gradle-wrapper.properties') }}
 
       - name: Read Kotlin version
         id: kotlin
@@ -98,6 +110,12 @@ jobs:
 
       - uses: gradle/actions/setup-gradle@v6
 
+      - name: Cache Gradle dependencies
+        uses: actions/cache@v6
+        with:
+          path: ~/.gradle/caches
+          key: ${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle*', '**/gradle-wrapper.properties') }}
+
       - name: Build Android Sample
         run: ./gradlew :samples:multiplatform:androidApp:assembleRelease
 
@@ -114,6 +132,12 @@ jobs:
           java-version: 21
 
       - uses: gradle/actions/setup-gradle@v6
+
+      - name: Cache Gradle dependencies
+        uses: actions/cache@v6
+        with:
+          path: ~/.gradle/caches
+          key: ${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle*', '**/gradle-wrapper.properties') }}
 
       - name: Build Android Sample
         run: ./gradlew :samples:android:assembleRelease
@@ -132,6 +156,12 @@ jobs:
 
       - uses: gradle/actions/setup-gradle@v6
 
+      - name: Cache Gradle dependencies
+        uses: actions/cache@v6
+        with:
+          path: ~/.gradle/caches
+          key: ${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle*', '**/gradle-wrapper.properties') }}
+
       - name: Build Android Sample
         run: ./gradlew :samples:java:assembleRelease
 
@@ -149,6 +179,12 @@ jobs:
 
       - uses: gradle/actions/setup-gradle@v6
 
+      - name: Cache Gradle dependencies
+        uses: actions/cache@v6
+        with:
+          path: ~/.gradle/caches
+          key: ${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle*', '**/gradle-wrapper.properties') }}
+
       - name: Build Desktop App
         run: ./gradlew :samples:multiplatform:desktopApp:packageDistributionForCurrentOS
 
@@ -165,6 +201,12 @@ jobs:
           java-version: 21
 
       - uses: gradle/actions/setup-gradle@v6
+
+      - name: Cache Gradle dependencies
+        uses: actions/cache@v6
+        with:
+          path: ~/.gradle/caches
+          key: ${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle*', '**/gradle-wrapper.properties') }}
 
       - name: Build Wasm Sample
         run: ./gradlew :samples:multiplatform:webApp:wasmJsBrowserDistribution
@@ -191,6 +233,12 @@ jobs:
         run: /usr/bin/xcodebuild -version
 
       - uses: gradle/actions/setup-gradle@v6
+
+      - name: Cache Gradle dependencies
+        uses: actions/cache@v6
+        with:
+          path: ~/.gradle/caches
+          key: ${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle*', '**/gradle-wrapper.properties') }}
 
       - name: Read Kotlin version
         id: kotlin
